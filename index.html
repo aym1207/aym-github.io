@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+
+<head>
+    <title>情報基礎2 最終課題</title>
+    <style>
+
+    body {
+      background: #d6eaff;
+      font-family: "YuGothic" ;
+
+    }
+    h1 {
+      color: #191970;
+      padding: 0.5em 0;
+      display: inline-block;
+      border-top: solid 3px #191970;
+      border-bottom: solid 3px #191970;
+    }
+    ._answer {
+      display: inline-block;
+    	position: relative;
+    	width: 70px;
+    	padding: 30px;
+    	text-align: center;
+    	text-decoration: none;
+    	color: #818181;
+    }
+    ._answer:hover {
+      color: #1B1B1B;
+    	 cursor: pointer;
+    	 text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body>
+    <h1>地理QUIZ 10</h1>
+    <h2 id="_question">question</h2>
+    <ul>
+        <li id="_ans1">answer1</li>
+        <li id="_ans2">answer2</li>
+        <li id="_ans3">answer3</li>
+    </ul>
+    <button type="button" class=_answer onclick="Answer_Check(1)">1.</button>
+    <button type="button" class=_answer onclick="Answer_Check(2)">2.</button>
+    <button type="button" class=_answer onclick="Answer_Check(3)">3.</button>
+
+
+    <script>
+
+        var Question = [
+            ["(1)世界で最も人口が多い国は？",
+                "1. 中華人民共和国",
+                "2. アメリカ合衆国",
+                "3. インド",
+                "1"],
+            ["(2)平均寿命が最も長い国は？",
+                "1. スイス",
+                "2. ノルウェー",
+                "3. 日本",
+                "3"],
+            ["(3)消費税が最も高い国は？",
+                "1. スウェーデン",
+                "2. ハンガリー",
+                "3. フィンランド",
+                "2"],
+            ["(4)バナナの生産量が最も多い国は？",
+            　　"1. フィリピン",
+          　　  "2. インド",
+            　　"3. インドネシア",
+        　　    "2"],
+            ["(5)カカオ豆の生産量の最も多い国は？",
+                "1. ブラジル",
+                "2. ガーナ",
+                "3. コートジボワール",
+                "3"],
+            ["(6)鉄道が最も長い国は？",
+                "1. ロシア",
+                "2. 中華人民共和国",
+                "3. アメリカ合衆国",
+                "3"],
+            ["(7)世界遺産の数が最も多い国は？",
+          　　  "1. イタリア",
+          　　  "2. 中華人民共和国",
+          　　  "3. スペイン",
+          　　  "1"],
+            ["(8)日本以外で、日本人が最も多い国は？",
+                "1. オーストラリア",
+                "2. アメリカ合衆国",
+                "3. ブラジル",
+                "2"],
+            ["(9)難民の出身国で最も多いのは？",
+                "1. シリア",
+                "2. アフガニスタン",
+                "3. ミャンマー",
+                "1"],
+            ["(10)日本語学習者の最も多い国は？",
+                "1. インドネシア",
+                "2. 大韓民国",
+                "3. 中華人民共和国",
+                "3"],
+        ];
+
+        var Q = document.getElementById('_question');
+
+        var A1 = document.getElementById('_ans1');
+        var A2 = document.getElementById('_ans2');
+        var A3 = document.getElementById('_ans3');
+
+
+
+        var correct = 0;
+        var q_count = 0;
+
+
+        Q_Set();
+        function Q_Set() {
+            Q.textContent = Question[q_count][0];
+            A1.textContent = Question[q_count][1];
+            A2.textContent = Question[q_count][2];
+            A3.textContent = Question[q_count][3];
+
+        };
+
+        function Answer_Check(ans) {
+            if (ans == Question[q_count][4]) {
+                alert("正解");
+                correct++;
+            } else {
+                alert("不正解");
+            }
+            q_count++;
+            if (q_count == Question.length) {
+              if (correct >= 8) {
+              Q.textContent = "正解数は " + correct + "．素晴らしい！";
+              A1.textContent = "";
+              A2.textContent = "";
+              A3.textContent = "";}
+
+              else if (correct >= 7 && correct <= 5) {
+              Q.textContent = "正解数は " + correct + "．もっとできるはず！";
+              A1.textContent = "";
+              A2.textContent = "";
+              A3.textContent = "";}
+
+              else if (correct <=4) {
+              Q.textContent = "正解数は " + correct + "．もう少し頑張りましょう！";}
+              A1.textContent = "";
+              A2.textContent = "";
+              A3.textContent = "";}
+
+              else {
+                Q_Set();
+            }
+          }
+
+    </script>
+</body>
+
+</html>
